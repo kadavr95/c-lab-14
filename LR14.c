@@ -58,7 +58,7 @@ int output(int qty, int *array)//вывод массива
 	int i,j,cycles;//определение переменных
 	if (qty>0)
 	{
-		printf("|   Element   |");
+		printf("|     Element      |");
 	}
 	else
 	{
@@ -66,32 +66,32 @@ int output(int qty, int *array)//вывод массива
 	}
 	for (i = 1; i <=qty; i++) //цикл по всем элементам
 	{
-		printf(" %10d |",i);//вывод номера элемента в массиве
-		if ((i%5==0)&&(i!=qty)) //определение конца строки
+		printf(" %3d |",i);//вывод номера элемента в массиве
+		if ((i%10==0)&&(i!=qty)) //определение конца строки
 		{
-			printf("|    Value    |");
-			for (j=4; j >=0; j--)//вывод значений
+			printf("|      Value       |");
+			for (j=9; j >=0; j--)//вывод значений
 			{
-				printf(" %10d |",(array[i-j]));
+				printf(" %3d |",(array[i-j]));
 			}
-			printf("|   Element   |");
+			printf("|     Element      |");
 		}
 		else //или последнего элемента в массиве
 		{
 			if (i==qty)
 			{
-				if (i%5!=0)
+				if (i%10!=0)
 				{
 					printf("\n");
 				}
-				printf("|    Value    |");//вывод значений
-				if (i%5==0)
-					cycles=5;
+				printf("|      Value       |");//вывод значений
+				if (i%10==0)
+					cycles=10;
 				else
-					cycles=(i%5);
+					cycles=(i%10);
 				for (j=(cycles-1); j >=0; j--)
 				{
-					printf(" %10d |",array[i-j]);
+					printf(" %3d |",array[i-j]);
 				}
 				printf("\n\n"); //создание пустой строки после вывода
 			}
@@ -120,11 +120,13 @@ int QuickSort(int first, int last, int *array,int qty, int *nstage, int *cmpr)
 	{
 		while (array[l]<pivot)//пока элемент меньше опорного
 		{
+			printf("Swap: array[%d]=%d with array[%d]=%d\n",l,array[l],r,array[r]);//вывод номеров и значений элементов
 			l++;//увеличение левого
 			*cmpr=*cmpr+1;//изменение количества сравнений
 		}
 		while (array[r]>pivot)//пока элемент больше опорного
 		{
+			printf("Swap: array[%d]=%d with array[%d]=%d\n",l,array[l],r,array[r]);//вывод номеров и значений элементов
 			r--;//уменьшение правого
 			*cmpr=*cmpr+1;//изменение количества сравнений
 		}
@@ -152,4 +154,5 @@ int swap(int *x, int *y)//перестановка переменных
 	*x=*y;
 	*y=temp;
 }
+
 
